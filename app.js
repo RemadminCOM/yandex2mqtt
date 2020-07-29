@@ -77,9 +77,18 @@ app.post('/provider/v1.0/user/unlink', routes.user.unlink);
 httpsServer.listen(config.https.port);
 
 
-function findDevIndex(arr, elem) {
+function findDevIndexByType(arr, elem) {
     for (var i = 0; i < arr.length; i++) {
         if (arr[i].type === elem) {
+            return i;
+        }
+    }
+    return false;
+}
+
+function findDevIndexByInstance(arr, instance) {
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i].parameters.instance === instance) {
             return i;
         }
     }
@@ -112,12 +121,13 @@ if (statPairs) {
             if (matchedDeviceId == -1) return;
 
             const device = global.devices.find(device => device.data.id == statPairs[matchedDeviceId].deviceId);
+            const topicType = statPairs[matchedDeviceId].topicType;
             var devindx;
-            switch (statPairs[matchedDeviceId].topicType) {
+            switch (topicType) {
                 case 'on':
                     try {
-                        devindx = findDevIndex(device.data.capabilities, 'devices.capabilities.on_off')
-                        device.data.capabilities[devindx].state.instance = statPairs[matchedDeviceId].topicType;
+                        devindx = findDevIndexByType(device.data.capabilities, 'devices.capabilities.on_off')
+                        device.data.capabilities[devindx].state.instance = topicType;
                         device.data.capabilities[devindx].state.value = ['on', '1', 'true'].includes(message.toString().toLowerCase());
                     } catch (err) {
                         console.log(err);
@@ -125,8 +135,8 @@ if (statPairs) {
                     break;
                 case 'mute':
                     try {
-                        devindx = findDevIndex(device.data.capabilities, 'devices.capabilities.toggle')
-                        device.data.capabilities[devindx].state.instance = statPairs[matchedDeviceId].topicType;
+                        devindx = findDevIndexByType(device.data.capabilities, 'devices.capabilities.toggle')
+                        device.data.capabilities[devindx].state.instance = topicType;
                         device.data.capabilities[devindx].state.value = ['on', '1', 'true'].includes(message.toString().toLowerCase());
                     } catch (err) {
                         console.log(err);
@@ -134,8 +144,8 @@ if (statPairs) {
                     break;
                 case 'hsv':
                     try {
-                        devindx = findDevIndex(device.data.capabilities, 'devices.capabilities.color_setting')
-                        device.data.capabilities[devindx].state.instance = statPairs[matchedDeviceId].topicType;
+                        devindx = findDevIndexByType(device.data.capabilities, 'devices.capabilities.color_setting')
+                        device.data.capabilities[devindx].state.instance = topicType;
                         device.data.capabilities[devindx].state.value = JSON.parse(message);
                     } catch (err) {
                         console.log(err);
@@ -143,8 +153,8 @@ if (statPairs) {
                     break;
                 case 'rgb':
                     try {
-                        devindx = findDevIndex(device.data.capabilities, 'devices.capabilities.color_setting')
-                        device.data.capabilities[devindx].state.instance = statPairs[matchedDeviceId].topicType;
+                        devindx = findDevIndexByType(device.data.capabilities, 'devices.capabilities.color_setting')
+                        device.data.capabilities[devindx].state.instance = topicType;
                         device.data.capabilities[devindx].state.value = JSON.parse(message);
                     } catch (err) {
                         console.log(err);
@@ -152,8 +162,8 @@ if (statPairs) {
                     break;
                 case 'temperature_k':
                     try {
-                        devindx = findDevIndex(device.data.capabilities, 'devices.capabilities.color_setting')
-                        device.data.capabilities[devindx].state.instance = statPairs[matchedDeviceId].topicType;
+                        devindx = findDevIndexByType(device.data.capabilities, 'devices.capabilities.color_setting')
+                        device.data.capabilities[devindx].state.instance = topicType;
                         device.data.capabilities[devindx].state.value = JSON.parse(message);
                     } catch (err) {
                         console.log(err);
@@ -161,8 +171,8 @@ if (statPairs) {
                     break;        
                 case 'thermostat':
                     try {
-                        devindx = findDevIndex(device.data.capabilities, 'devices.capabilities.mode')
-                        device.data.capabilities[devindx].state.instance = statPairs[matchedDeviceId].topicType;
+                        devindx = findDevIndexByType(device.data.capabilities, 'devices.capabilities.mode')
+                        device.data.capabilities[devindx].state.instance = topicType;
                         device.data.capabilities[devindx].state.value = JSON.parse(message);
                     } catch (err) {
                         console.log(err);
@@ -170,8 +180,8 @@ if (statPairs) {
                     break;
                 case 'fan_speed':
                     try {
-                        devindx = findDevIndex(device.data.capabilities, 'devices.capabilities.mode')
-                        device.data.capabilities[devindx].state.instance = statPairs[matchedDeviceId].topicType;
+                        devindx = findDevIndexByType(device.data.capabilities, 'devices.capabilities.mode')
+                        device.data.capabilities[devindx].state.instance = topicType;
                         device.data.capabilities[devindx].state.value = JSON.parse(message);
                     } catch (err) {
                         console.log(err);
@@ -179,26 +189,26 @@ if (statPairs) {
                     break;    
                 case 'brightness':
                     try {
-                        devindx = findDevIndex(device.data.capabilities, 'devices.capabilities.range')
-                        device.data.capabilities[devindx].state.instance = statPairs[matchedDeviceId].topicType;
+                        devindx = findDevIndexByType(device.data.capabilities, 'devices.capabilities.range')
+                        device.data.capabilities[devindx].state.instance = topicType;
                         device.data.capabilities[devindx].state.value = JSON.parse(message);
                     } catch (err) {
                         console.log(err);
                     }
                     break;
-                case 'temperature':
+                /*case 'temperature':
                     try {
-                        devindx = findDevIndex(device.data.capabilities, 'devices.capabilities.range')
-                        device.data.capabilities[devindx].state.instance = statPairs[matchedDeviceId].topicType;
+                        devindx = findDevIndexByType(device.data.capabilities, 'devices.capabilities.range')
+                        device.data.capabilities[devindx].state.instance = topicType;
                         device.data.capabilities[devindx].state.value = JSON.parse(message);
                     } catch (err) {
                         console.log(err);
                     }
-                    break;
+                    break;*/
                 case 'volume':
                     try {
-                        devindx = findDevIndex(device.data.capabilities, 'devices.capabilities.range')
-                        device.data.capabilities[devindx].state.instance = statPairs[matchedDeviceId].topicType;
+                        devindx = findDevIndexByType(device.data.capabilities, 'devices.capabilities.range')
+                        device.data.capabilities[devindx].state.instance = topicType;
                         device.data.capabilities[devindx].state.value = JSON.parse(message);
                     } catch (err) {
                         console.log(err);
@@ -206,15 +216,30 @@ if (statPairs) {
                     break;
                 case 'channel':
                     try {
-                        devindx = findDevIndex(device.data.capabilities, 'devices.capabilities.range')
-                        device.data.capabilities[devindx].state.instance = statPairs[matchedDeviceId].topicType;
+                        devindx = findDevIndexByType(device.data.capabilities, 'devices.capabilities.range')
+                        device.data.capabilities[devindx].state.instance = topicType;
                         device.data.capabilities[devindx].state.value = JSON.parse(message);
                     } catch (err) {
                         console.log(err);
                     }
-                    break;                        
+                    break;
+
+                case 'voltage':
+                case 'amperage':
+                case 'power':
+                case 'co2_level':
+                case 'humidity':
+                case 'temperature':
+                    try {
+                        devindx = findDevIndexByInstance(device.data.properties, topicType)
+                        device.data.properties[devindx].state.instance = topicType;
+                        device.data.properties[devindx].state.value = JSON.parse(message);
+                    } catch (err) {
+                        console.log(err);
+                    }
+                    break;
                 default:
-                    console.log('Unknown topic Type: ' + statPairs[matchedDeviceId].topicType);
+                    console.log('Unknown topic Type: ' + topicType);
             };
         });
     });
