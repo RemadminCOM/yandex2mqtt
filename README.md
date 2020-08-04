@@ -6,6 +6,7 @@
 Статья на Хабре: https://habr.com/ru/post/465537/
 
 Поддержать автора оригинального проекта: https://www.tinkoff.ru/sl/81l76nCPnL1
+
 Поддержать автора доработок:             https://www.tinkoff.ru/sl/ANmdX6jdyTB
 
 2020-07-29 
