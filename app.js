@@ -15,6 +15,7 @@ const device = require('./device');
 const fs = require('fs');
 const app = express();
 const https = require('https');
+const { json } = require('body-parser');
 const privateKey = fs.readFileSync(config.https.privateKey, 'utf8');
 const certificate = fs.readFileSync(config.https.certificate, 'utf8');
 const credentials = {
@@ -182,7 +183,7 @@ if (statPairs) {
                     try {
                         devindx = findDevIndexByType(device.data.capabilities, 'devices.capabilities.mode')
                         device.data.capabilities[devindx].state.instance = topicType;
-                        device.data.capabilities[devindx].state.value = JSON.parse(message);
+                        device.data.capabilities[devindx].state.value = message.toString().toLowerCase();
                     } catch (err) {
                         console.log(err);
                     }

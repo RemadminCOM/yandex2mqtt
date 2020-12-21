@@ -14,16 +14,17 @@ module.exports = {
     },
 
     clients: [
-    {
-        id: '1',
-        name: 'Yandex',
-        clientId: 'yandex-smarthome12345',
-        clientSecret: 'secret12345',
-        isTrusted: false
+        {
+            id: '1',
+            name: 'Yandex',
+            clientId: 'yandex-smarthome12345',
+            clientSecret: 'secret12345',
+            isTrusted: false
         },
     ],
 
-    users: [{
+    users: [
+        {
             id: '1',
             username: 'admin',
             password: 'admin',
@@ -45,10 +46,10 @@ module.exports = {
             room: 'Гостинная',
             type: 'devices.types.light',
             mqtt: [
-                 {
+                {
                     type: 'on',
-                    set: '/devices/wb-mr6c_15/controls/K1/on',
-                    stat: '/devices/wb-mr6c_15/controls/K1'
+                    set: '/devices/wb-mr6c_52/controls/K1/on',
+                    stat: '/devices/wb-mr6c_52/controls/K1'
                 },
             ],
             capabilities: [
@@ -74,10 +75,10 @@ module.exports = {
             room: 'Гостинная',
             type: 'devices.types.light',
             mqtt: [
-                 {
+                {
                     type: 'on',
-                    set: '/devices/wb-mr6c_15/controls/K2/on',
-                    stat: '/devices/wb-mr6c_15/controls/K2'
+                    set: '/devices/wb-mr6c_52/controls/K2/on',
+                    stat: '/devices/wb-mr6c_52/controls/K2'
                 },
             ],
             capabilities: [
@@ -131,8 +132,7 @@ module.exports = {
                     }
                 }
             ],
-            properties: 
-            [
+            properties: [
                 {
                     type: 'devices.properties.float',
                     retrievable: true,
@@ -183,7 +183,7 @@ module.exports = {
             room: 'Гостинная',
             type: 'devices.types.media_device.tv',
             mqtt: [
-                 {
+                {
                     type: 'on',
                     set: '/devices/wb-msw-v3_61/controls/Play from ROM4/on',
                     stat: '/devices/wwb-msw-v3_61/controls/Play from ROM4'
@@ -212,10 +212,10 @@ module.exports = {
             room: 'Кухня',
             type: 'devices.types.light',
             mqtt: [
-                 {
+                {
                     type: 'on',
-                    set: '/devices/wb-mr6c_15/controls/K3/on',
-                    stat: '/devices/wb-mr6c_15/controls/K3'
+                    set: '/devices/wb-mr6c_52/controls/K3/on',
+                    stat: '/devices/wb-mr6c_52/controls/K3'
                 },
             ],
             capabilities: [
@@ -228,7 +228,7 @@ module.exports = {
                     }
                 },
             ],
-            device_info:
+            device_info: 
             {
                 manufacturer: 'wirenboard',
                 model: 'wb-mr6lv-i'
@@ -241,10 +241,10 @@ module.exports = {
             room: 'Кухня',
             type: 'devices.types.light',
             mqtt: [
-                 {
+                {
                     type: 'on',
-                    set: '/devices/wb-mr6c_15/controls/K4/on',
-                    stat: '/devices/wb-mr6c_15/controls/K4'
+                    set: '/devices/wb-mr6c_52/controls/K4/on',
+                    stat: '/devices/wb-mr6c_52/controls/K4'
                 },
             ],
             capabilities: [
@@ -270,10 +270,10 @@ module.exports = {
             room: 'Кухня',
             type: 'devices.types.light',
             mqtt: [
-                 {
+                {
                     type: 'on',
-                    set: '/devices/wb-mr6c_15/controls/K5/on',
-                    stat: '/devices/wb-mr6c_15/controls/K5'
+                    set: '/devices/hood/controls/Light/on',
+                    stat: '/devices/hood/controls/Light'
                 },
             ],
             capabilities: [
@@ -293,6 +293,63 @@ module.exports = {
             }
         },
 
+        {
+            id: '6d866077-7663-4262-9443-02cb87897aa4',
+            name: 'Вытяжка',
+            room: 'Кухня',
+            type: 'devices.types.purifier',
+            mqtt: [
+                {
+                    type: 'on',
+                    set: '/devices/hood/controls/OnOff/on',
+                    stat: '/devices/hood/controls/OnOff'
+                },
+                {
+                    type: 'fan_speed',
+                    set: '/devices/hood/controls/ModeText',
+                    stat: '/devices/hood/controls/ModeText'
+                },
+            ],
+            capabilities: [
+                {
+                    type: 'devices.capabilities.on_off',
+                    retrievable: true,
+                    state: {
+                        instance: 'on',
+                        value: true
+                    }
+                },
+                {
+                    type: 'devices.capabilities.mode',
+                    retrievable: true,
+                    parameters: {
+                        instance: 'fan_speed',
+                        modes: [
+                            {
+                                value: 'low'
+                            },
+                            {
+                                value: 'medium'
+                            },
+                            {
+                                value: 'high'
+                            },
+                        ],
+                        ordered: true,
+                    },
+                    state: {
+                        instance: 'fan_speed',
+                        value: 'auto',
+                    },
+                }
+            ],
+            device_info:
+            {
+                manufacturer: 'doroganovv',
+                model: 'esp8266'
+            }
+        },
+
 //----------------------------Спальня--------------------------------------------
         {
             id: 'ab406963-8b30-484f-91f9-0300ed6b3a59',
@@ -300,10 +357,10 @@ module.exports = {
             room: 'Спальня',
             type: 'devices.types.light',
             mqtt: [
-                 {
+                {
                     type: 'on',
-                    set: '/devices/wb-mr6c_19/controls/K1/on',
-                    stat: '/devices/wb-mr6c_19/controls/K1'
+                    set: '/devices/wb-mr6c_107/controls/K1/on',
+                    stat: '/devices/wb-mr6c_107/controls/K1'
                 },
             ],
             capabilities: [
@@ -330,10 +387,10 @@ module.exports = {
             room: 'Спальня',
             type: 'devices.types.light',
             mqtt: [
-                 {
+                {
                     type: 'on',
-                    set: '/devices/wb-mr6c_19/controls/K2/on',
-                    stat: '/devices/wb-mr6c_19/controls/K2'
+                    set: '/devices/wb-mr6c_107/controls/K2/on',
+                    stat: '/devices/wb-mr6c_107/controls/K2'
                 },
             ],
             capabilities: [
@@ -360,10 +417,10 @@ module.exports = {
             room: 'Гостевая',
             type: 'devices.types.light',
             mqtt: [
-                 {
+                {
                     type: 'on',
-                    set: '/devices/wb-mr6c_19/controls/K3/on',
-                    stat: '/devices/wb-mr6c_19/controls/K3'
+                    set: '/devices/wb-mr6c_107/controls/K3/on',
+                    stat: '/devices/wb-mr6c_107/controls/K3'
                 },
             ],
             capabilities: [
@@ -390,10 +447,10 @@ module.exports = {
             room: 'Гостевая',
             type: 'devices.types.light',
             mqtt: [
-                 {
+                {
                     type: 'on',
-                    set: '/devices/wb-mr6c_19/controls/K4/on',
-                    stat: '/devices/wb-mr6c_19/controls/K4'
+                    set: '/devices/wb-mr6c_107/controls/K4/on',
+                    stat: '/devices/wb-mr6c_107/controls/K4'
                 },
             ],
             capabilities: [
@@ -420,10 +477,10 @@ module.exports = {
             room: 'Ванна',
             type: 'devices.types.light',
             mqtt: [
-                 {
+                {
                     type: 'on',
-                    set: '/devices/wb-mr6c_19/controls/K5/on',
-                    stat: '/devices/wb-mr6c_19/controls/K5'
+                    set: '/devices/wb-mr6c_107/controls/K5/on',
+                    stat: '/devices/wb-mr6c_107/controls/K5'
                 },
             ],
             capabilities: [
@@ -441,7 +498,6 @@ module.exports = {
                 manufacturer: 'wirenboard',
                 model: 'wb-mr6lv-i'
             }
-
         },
 
         {
@@ -450,10 +506,10 @@ module.exports = {
             room: 'Ванна',
             type: 'devices.types.light',
             mqtt: [
-                 {
+                {
                     type: 'on',
-                    set: '/devices/wb-mr6c_19/controls/K6/on',
-                    stat: '/devices/wb-mr6c_19/controls/K6'
+                    set: '/devices/wb-mr6c_107/controls/K6/on',
+                    stat: '/devices/wb-mr6c_107/controls/K6'
                 },
             ],
             capabilities: [
@@ -511,8 +567,8 @@ module.exports = {
             mqtt: [
                 {
                     type: 'on',
-                    set: '/devices/wb-mr6c_15/controls/K6/on',
-                    stat: '/devices/wb-mr6c_15/controls/K6'
+                    set: '/devices/wb-mr6c_52/controls/K6/on',
+                    stat: '/devices/wb-mr6c_52/controls/K6'
                 },
                 {
                     type: 'voltage',
@@ -537,8 +593,7 @@ module.exports = {
                     }
                 }
             ],
-            properties: 
-            [
+            properties: [
                 {
                     type: 'devices.properties.float',
                     retrievable: true,
@@ -581,6 +636,33 @@ module.exports = {
                 manufacturer: 'wirenboard',
                 model: 'wb-mr6lv-i'
             }
-        }
+        },
+        {
+            id: 'f368fbff-7115-4f5f-ad79-7d0ce597308d',
+            name: 'Домофон',
+            room: 'Коридор',
+            type: 'devices.types.openable',
+            mqtt: [
+                {
+                    type: 'on',
+                    set: '/devices/intercom/controls/AcceptAndOpen/on'
+                }
+            ],
+            capabilities: [
+                {
+                    type: 'devices.capabilities.on_off',
+                    retrievable: false,
+                    state: {
+                        instance: 'on',
+                        value: true
+                    }
+                }
+            ],
+            device_info:
+            {
+                manufacturer: 'wirenboard',
+                model: 'wb-mr6lv-i'
+            }
+        },
     ]
 }

@@ -43,7 +43,7 @@ class device {
             topic = this.data.custom_data.mqtt[this.findDevIndex(this.data.custom_data.mqtt, inst)].set || false;
             break; 
           } 
-          catch (err) {              
+          catch (err) {
             topic = false;
             console.log(err);
           }
@@ -55,10 +55,22 @@ class device {
             topic = this.data.custom_data.mqtt[this.findDevIndex(this.data.custom_data.mqtt, inst)].set || false;
             break; 
           } 
-          catch (err) {              
+          catch (err) {
             topic = false;
             console.log(err);
-          }          
+          }
+      case 'fan_speed':
+          try {
+            int = val;
+            this.data.capabilities[this.findDevIndex(this.data.capabilities, type)].state.instance = inst;
+            this.data.capabilities[this.findDevIndex(this.data.capabilities, type)].state.value = val;
+            topic = this.data.custom_data.mqtt[this.findDevIndex(this.data.custom_data.mqtt, inst)].set || false;
+            break; 
+          } 
+          catch (err) {
+            topic = false;
+            console.log(err);
+          }     
       default:
           try {
             int = JSON.stringify(val);
@@ -66,7 +78,7 @@ class device {
             this.data.capabilities[this.findDevIndex(this.data.capabilities, type)].state.value = val;
             topic = this.data.custom_data.mqtt[this.findDevIndex(this.data.custom_data.mqtt, inst)].set || false; 
           } 
-          catch (err) {              
+          catch (err) {
             topic = false;
             console.log(err);
           }  
