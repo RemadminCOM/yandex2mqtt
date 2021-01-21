@@ -108,7 +108,59 @@ module.exports = {
                     type: 'on',
                     set: '/devices/wb-msw-v3_61/controls/Play from ROM1/on',
                     stat: '/devices/wb-msw-v3_61/controls/Play from ROM1'
+                }
+            ],
+            capabilities: [
+                {
+                    type: 'devices.capabilities.on_off',
+                    retrievable: false,
+                    state: {
+                        instance: 'on',
+                        value: true
+                    }
+                }
+            ],
+            device_info:
+            {
+                manufacturer: 'Tion',
+                model: 'O2'
+            }
+        },
+
+        {
+            id: 'dd977af6-ee1b-4ed9-aba5-bd9fcabaf81d',
+            name: 'Телевизор',
+            room: 'Гостинная',
+            type: 'devices.types.media_device.tv',
+            mqtt: [
+                {
+                    type: 'on',
+                    set: '/devices/wb-msw-v3_61/controls/Play from ROM4/on',
+                    stat: '/devices/wwb-msw-v3_61/controls/Play from ROM4'
                 },
+            ],
+            capabilities: [
+                {
+                    type: 'devices.capabilities.on_off',
+                    retrievable: false,
+                    state: {
+                        instance: 'on',
+                        value: true
+                    }
+                },
+            ],
+            device_info:
+            {
+                manufacturer: 'wirenboard',
+                model: 'wb-msw-v3_61'
+            }
+        }, 
+        {
+            id: '6aed36b8-6e50-4552-9e55-b007aa60323e',
+            name: 'Гостинная',
+            room: 'Гостинная',
+            type: 'devices.types.sensor',
+            mqtt: [
                 {
                     type: 'co2_level',
                     stat: '/devices/wb-msw-v3_61/controls/CO2'
@@ -123,14 +175,6 @@ module.exports = {
                 }
             ],
             capabilities: [
-                {
-                    type: 'devices.capabilities.on_off',
-                    retrievable: false,
-                    state: {
-                        instance: 'on',
-                        value: true
-                    }
-                }
             ],
             properties: [
                 {
@@ -172,40 +216,11 @@ module.exports = {
             ],
             device_info:
             {
-                manufacturer: 'Tion',
-                model: 'O2'
-            }
-        },
-
-        {
-            id: 'dd977af6-ee1b-4ed9-aba5-bd9fcabaf81d',
-            name: 'Телевизор',
-            room: 'Гостинная',
-            type: 'devices.types.media_device.tv',
-            mqtt: [
-                {
-                    type: 'on',
-                    set: '/devices/wb-msw-v3_61/controls/Play from ROM4/on',
-                    stat: '/devices/wwb-msw-v3_61/controls/Play from ROM4'
-                },
-            ],
-            capabilities: [
-                {
-                    type: 'devices.capabilities.on_off',
-                    retrievable: false,
-                    state: {
-                        instance: 'on',
-                        value: true
-                    }
-                },
-            ],
-            device_info:
-            {
                 manufacturer: 'wirenboard',
-                model: 'wb-msw-v3_61'
+                model: 'WB-MSW v.3'
             }
         },
-//----------------------------Кухня----------------------------------------------
+        //----------------------------Кухня----------------------------------------------
         {
             id: 'b53a3690-4f86-41ac-91ba-52c6f4ede9b3',
             name: 'Свет',
@@ -228,7 +243,7 @@ module.exports = {
                     }
                 },
             ],
-            device_info: 
+            device_info:
             {
                 manufacturer: 'wirenboard',
                 model: 'wb-mr6lv-i'
@@ -532,7 +547,7 @@ module.exports = {
 
         {
             id: '3ecba18f-b352-4841-86bd-2445cf76c580',
-            name: 'Холодная вода',
+            name: 'Вода',
             room: 'Ванна',
             type: 'devices.types.switch',
             mqtt: [
@@ -569,7 +584,57 @@ module.exports = {
                     type: 'on',
                     set: '/devices/wb-mr6c_52/controls/K6/on',
                     stat: '/devices/wb-mr6c_52/controls/K6'
-                },
+                }
+            ],
+            capabilities: [
+                {
+                    type: 'devices.capabilities.on_off',
+                    retrievable: true,
+                    state: {
+                        instance: 'on',
+                        value: true
+                    }
+                }
+            ],
+            device_info:
+            {
+                manufacturer: 'wirenboard',
+                model: 'wb-mr6lv-i'
+            }
+        },
+        {
+            id: 'f368fbff-7115-4f5f-ad79-7d0ce597308d',
+            name: 'Домофон',
+            room: 'Коридор',
+            type: 'devices.types.openable',
+            mqtt: [
+                {
+                    type: 'on',
+                    set: '/devices/intercom/controls/AcceptAndOpen/on'
+                }
+            ],
+            capabilities: [
+                {
+                    type: 'devices.capabilities.on_off',
+                    retrievable: false,
+                    state: {
+                        instance: 'on',
+                        value: true
+                    }
+                }
+            ],
+            device_info:
+            {
+                manufacturer: 'wirenboard',
+                model: 'wb-mr6lv-i'
+            }
+        }, 
+        {
+            id: 'f681e844-d882-44c7-a020-61f4d35026a5',
+            name: 'Электросчётчик',
+            room: 'Коридор',
+            type: 'devices.types.sensor',
+            mqtt: [
                 {
                     type: 'voltage',
                     stat: '/devices/milur105_255/controls/Voltage'
@@ -584,14 +649,6 @@ module.exports = {
                 }
             ],
             capabilities: [
-                {
-                    type: 'devices.capabilities.on_off',
-                    retrievable: true,
-                    state: {
-                        instance: 'on',
-                        value: true
-                    }
-                }
             ],
             properties: [
                 {
@@ -634,35 +691,10 @@ module.exports = {
             device_info:
             {
                 manufacturer: 'wirenboard',
-                model: 'wb-mr6lv-i'
+                model: 'WB-MSW v.3'
             }
         },
-        {
-            id: 'f368fbff-7115-4f5f-ad79-7d0ce597308d',
-            name: 'Домофон',
-            room: 'Коридор',
-            type: 'devices.types.openable',
-            mqtt: [
-                {
-                    type: 'on',
-                    set: '/devices/intercom/controls/AcceptAndOpen/on'
-                }
-            ],
-            capabilities: [
-                {
-                    type: 'devices.capabilities.on_off',
-                    retrievable: false,
-                    state: {
-                        instance: 'on',
-                        value: true
-                    }
-                }
-            ],
-            device_info:
-            {
-                manufacturer: 'wirenboard',
-                model: 'wb-mr6lv-i'
-            }
-        },
+        //----------------------------Новое--------------------------------------------
+        
     ]
 }
