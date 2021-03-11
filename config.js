@@ -694,7 +694,72 @@ module.exports = {
                 model: 'WB-MSW v.3'
             }
         },
-        //----------------------------Новое--------------------------------------------
-        
+        //----------------------------Метеостанция на улице--------------------------------------------
+        {
+            id: '6aed36b8-6e50-4552-9e55-b007aa60747a',
+            name: 'Метеостанция',
+            room: 'Улица',
+            type: 'devices.types.sensor',
+            mqtt: [
+                {
+                    type: 'temperature',
+                    stat: '/devices/yandex/meteo/temp'
+                },
+                {
+                    type: 'humidity',
+                    stat: '/devices/yandex/meteo/humidity'
+                },
+                {
+                    type: 'pressure',
+                    stat: '/devices/yandex/meteo/pressure'
+                }
+            ],
+            capabilities: [
+            ],
+            properties: [
+                {
+                    type: 'devices.properties.float',
+                    retrievable: true,
+                    state: {
+                        instance: 'temperature',
+                        value: 0
+                    },
+                    parameters: {
+                        instance: 'temperature',
+                        unit: 'unit.temperature.celsius'
+                    }
+                },
+                {
+                    type: 'devices.properties.float',
+                    retrievable: true,
+                    state: {
+                        instance: 'humidity',
+                        value: 0
+                    },
+                    parameters: {
+                        instance: 'humidity',
+                        unit: 'unit.percent'
+                    }
+                },
+                {
+                    type: 'devices.properties.float',
+                    retrievable: true,
+                    state: {
+                        instance: 'pressure',
+                        value: 500
+                    },
+                    parameters: {
+                        instance: 'pressure',
+                        unit: 'unit.pressure.mmhg'
+                    }
+                }
+            ],
+            device_info:
+            {
+                manufacturer: 'Remadmin',
+                model: 'Remadmin Meteo V1'
+            }
+        },
+//----------------------------Новое--------------------------------------------        
     ]
 }
