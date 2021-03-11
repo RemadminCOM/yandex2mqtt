@@ -230,6 +230,7 @@ if (statPairs) {
                 case 'power':
                 case 'co2_level':
                 case 'humidity':
+				case 'pressure':
                 case 'temperature':
                     try {
                         devindx = findDevIndexByInstance(device.data.properties, topicType)
